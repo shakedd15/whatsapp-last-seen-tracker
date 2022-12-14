@@ -14,7 +14,7 @@ let isOnline = function(){
 		
 		//console.log(lastSeenData)
 		
-		if(lastSeenData=="online"){
+		if(lastSeenData=="מחובר/ת"){
 			return true;
 		}	
 		return false;
@@ -63,7 +63,7 @@ let checkLastSeen = function(){
 	if(status){
 		
 
-		time = t.getDate()+'-'+(t.getMonth()+1)+'-'+t.getFullYear()+' '+t.getHours()+':'+t.getMinutes()+':'+t.getSeconds()
+		time = t.getDate()+'-'+(t.getMonth()+1)+'-'+t.getFullYear()+‘-’+t.getHours()+':'+t.getMinutes()+':'+t.getSeconds()
 
 		if(lastOnlineBoolIndex==0){
 			timeInTimeOut.push(time)
@@ -78,11 +78,12 @@ let checkLastSeen = function(){
 		if(onlineBool[lastOnlineBoolIndex-1]==true){
 			timeInTimeOut.push(time)	
 			onlineTrace.push(timeInTimeOut)
+			console.log(timeInTimeOut)
 			timeInTimeOut=[]
 		}		
 	} 
 
-	timeout = setTimeout(checkLastSeen,1000)
+	timeout = setInterval(checkLastSeen,1000)
 }
 
 
